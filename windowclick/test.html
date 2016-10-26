@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>点击周围 关闭弹窗</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <style>
+	.content{
+		height: 1000px;
+		width: 100%;
+		background: #bfbfbf;
+	}
+	.popup{
+		width: 300px;
+		height: 300px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -150px;
+		margin-top: -150px;
+		background: #Fff;
+		display: none;
+	}
+    </style>
+</head>
+<body>
+<div class="content">
+	<a href="" class="btn">点我</a>
+	<div class="popup">
+		hahaah
+		<div class="ha">1111</div>
+	</div>
+</div>
+ <script src="./../lib/jquery-3.1.0.min.js"></script>
+ <script>
+ // http://stackoverflow.com/questions/152975/how-to-detect-a-click-outside-an-element?rq=1
+$(".btn").on("click",function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	$(".popup").show();
+	console.log(1);
+})
+$("body").on("click",'.popup',function(e){
+	e.stopPropagation();
+	if($(e.target).hasClass('ha')){
+		console.log(3);
+	}
+})
+$(window).on("click",function(e){
+	$(".popup").hide();
+	console.log(2);
+})
+// $('.popup').on("click",'.ha',function(){
+// 	console.log(3);
+// })
+ </script>
+</body>
+</html>

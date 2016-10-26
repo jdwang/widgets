@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+    	.error-tips{
+    		color: red;
+    	}
+    </style>
+    <title>验证</title>
+</head>
+<body>
+<form action="go.do" method="get" id="xinxixiugaiForm">
+	<div class="item">
+		<span>中文名</span>
+		<input type="text" class="input-modify"  id='userNameInput' value="" />
+	</div> 
+	<div  class="item">
+		<span>英文名</span>
+		<input type="text" class="input-modify" id='userNameEnInput' value="" /> 
+	</div>
+	<div  class="item">
+		<span>电话</span>
+		<input type="text" class="input-modify" id="userPhoneInput" value='' />
+	</div>
+	<div  class="item">
+		<span>身份證</span>
+		<input type="text" id="userIdInput" class="input-modify" value="" />
+	</div>
+
+	<div class="focusimg">
+		<div class="imgwrapper">
+			<img src="http://img.sootuu.com/vector/2007-07-01/066/1/572.gif" width="360" height="200" alt="">
+			<i>重新上傳</i>
+			<input type="file" class="input-upload"  value="" />
+		</div>
+	</div>
+	<a href="" class="c-save btn-confirm">保存修改</a>
+	<a href="" class="c-cancel btn-cancel">放棄</a>
+</form>
+<script src="../lib/jquery-3.1.0.min.js"></script>
+<script src="validateForm.js"></script>
+</body>
+</html>
