@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>下载图片</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" href="./../css/base.css" />
+    <style>
+	.popup{
+		width: 300px;
+		height: 300px;
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		margin-left: -150px;
+		margin-top: -150px;
+		background: #Fff;
+		display: none;
+	}
+	.dlforimg{display: none}
+    </style>
+</head>
+<body>
+<div class="content">
+	<div class="quest-list">
+		<h2>目标:</h2>
+		<ul>
+			<li>当图片绑定了默认的click事件时，禁用默认click事件，执行自己的click事件（1/1）</li>
+			<li>中键/右键/左键图片下载（1/1）</li>
+			<li>获取大图（0/1）</li>
+			<li>保存成书签，点击执行后（0/1）</li>
+		</ul>
+	</div>
+	<!-- <a  class="btn" href="http://www.163.com"> -->
+		<img  src="../../local/img/714X400.jpg" alt="">
+	<!-- </a> -->
+	<!-- <a  class="btn" href="http://localhost:9527/img/480X480.jpg" download="new"> -->
+	<a  class="btn" href="http://www.163.com">
+		<img  src="../../local/img/480X480.jpg" alt="">
+	</a>
+	
+
+	<div class="popup">
+		hahaah
+		<div class="ha">1111</div>
+	</div>
+</div>
+ <script src="./../lib/jquery-3.1.0.min.js"></script>
+ <script>
+
+function bindevent(){
+	//炮灰事件： 绑定弹窗
+	$(".btn").on("click",function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		$(".popup").show();
+		console.log(1);
+	})
+	$("body").on("click",'.popup',function(e){
+		e.stopPropagation();
+		if($(e.target).hasClass('ha')){
+			console.log(3);
+		}
+	})
+	$(window).on("click",function(e){
+		$(".popup").hide();
+		console.log(2);
+	})
+	// 正文
+	$('body img').off("click");
+	$('body img').parents('a').off("click");
+	$('body').on("contextmenu","img",function(e){
+		 return false;
+	})
+	$('body').on("mousedown","img",function(e){
+		 if( e.which == 3 ) {
+		 	e.preventDefault();
+			var _self = $(this);
+			var b = !_self.parents('a').length,
+				dlforimg;
+			console.log(!!$('.dlforimg'))
+			if(!!$('.dlforimg')){
+				$('body').append("<a class='dlforimg'></a>")
+			}
+			dlforimg = $('.dlforimg');
+			dlforimg.attr({
+				'href':_self.attr('src'),
+				'download':''
+			});
+			dlforimg[0].click();
+		}
+	})
+	// var el = document.querySelectorAll("body img")[0];
+	// el.removeEventListener('click',function(){});
+}
+
+
+
+bindevent();
+ </script>
+</body>
+</html>
