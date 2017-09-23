@@ -12,3 +12,4 @@ test/unit/coverage
 *.njsproj
 *.sln
 *.log
+testignore/*
